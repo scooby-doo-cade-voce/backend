@@ -46,6 +46,10 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+## Commits
+
+Usar o comando ```$ yarn commit``` e responder as questões. Depois é só comitar.
+
 ## Migrações
 
 Criar nova migração:
