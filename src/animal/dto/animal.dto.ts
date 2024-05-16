@@ -5,5 +5,5 @@ export class AnimalDto {
   size_id: number
   specie_id: number
   color_id: number
-  responsible: number /** Alterado para relacionamento OneToOne */
+  responsible_id: number /** Alterado para relacionamento OneToOne */
 }
