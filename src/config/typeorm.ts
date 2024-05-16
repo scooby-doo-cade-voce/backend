@@ -12,7 +12,7 @@ const config = {
   password: `${process.env.DATABASE_PASSWORD}`,
   database: `${process.env.DATABASE_NAME}`,
   entities: ["dist/**/*.entity{.ts,.js}"],
-  migrations: ["src/database/migrations/*{.ts,.js}"],
+  migrations: ["dist/database/migrations/*{.ts,.js}"],
   cli: {
     migrationsDir: "src/database/migrations"
   },
