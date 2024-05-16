@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1, 
+    "label":"Canino"
+  },
+  {
+    "id": 2, 
+    "label":"Equino"
+  },
+  {
+    "id": 3, 
+    "label":"Felino"
+  },
+  {
+    "id": 4, 
+    "label":"Ave"
+  },
+  {
+    "id": 5, 
+    "label":"Suíno"
+  }
+]

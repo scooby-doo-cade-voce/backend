@@ -1,0 +1,14 @@
+[
+  {
+    "id":1,
+    "label": "Pequeno"
+  },
+  {
+    "id":2,
+    "label": "Médio"
+  },
+  {
+    "id":3,
+    "label": "Grande"
+  }
+]
