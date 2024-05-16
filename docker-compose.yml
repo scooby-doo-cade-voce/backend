@@ -1,0 +1,14 @@
+services:
+  db_cadevc:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+      - TZ=GMT
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.database_data:/var/lib/postgresql/data
