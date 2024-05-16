@@ -5,6 +5,10 @@
   "author": "Vanessa Souto",
   "private": true,
   "license": "",
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  },
   "scripts": {
     "build": "nest build",
     "commit": "git-cz",
@@ -21,7 +25,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node ./node_modules/typeorm/cli",
-    "migration:run": "yarn run typeorm migration:run -- -d ./src/config/typeorm.ts",
+    "migration:run": "yarn run typeorm migration:run -d ./src/config/typeorm.ts",
     "migration:generate": "sh -c 'npm run typeorm -- -d ./src/config/typeorm.ts migration:generate ./src/database/migrations/${0}'",
     "migration:create": "sh -c 'npm run typeorm -- migration:create ./src/database/migrations/${0}'",
     "migration:revert": "npm run typeorm -- -d ./src/config/typeorm.ts migration:revert"
@@ -87,5 +91,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "volta": {
+    "node": "20.13.1",
+    "yarn": "4.2.2"
   }
 }

@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class Responsible1715870909687 implements MigrationInterface {
+export class Animals1715875323887 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "responsible",
+                name: "animals",
                 columns: [
                     {
                         name: "id",
@@ -18,12 +18,12 @@ export class Responsible1715870909687 implements MigrationInterface {
                         isNullable: false
                     },
                     {
-                        name: "email",
-                        type: "varchar",
+                        name: "age",
+                        type: "numeric",
                         isNullable: true
                     },
                     {
-                        name: "cellphone",
+                        name: "description",
                         type: "varchar",
                         isNullable: false
                     },
@@ -33,8 +33,9 @@ export class Responsible1715870909687 implements MigrationInterface {
         )
     }
 
+
     public async down(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.dropTable('responsible');
+        queryRunner.dropTable('animals');
     }
 
 }
