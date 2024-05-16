@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { AnimalService } from './animal.service';
 import { AnimalDto } from './dto/animal.dto';
 
@@ -21,7 +21,7 @@ export class AnimalController {
     return this.animalService.findOne(+id);
   }
 
- /*  @Patch(':id')
+  /*  @Patch(':id')
   update(@Param('id') id: string, @Body() updateAnimalDto: UpdateAnimalDto) {
     return this.animalService.update(+id, updateAnimalDto);
   }

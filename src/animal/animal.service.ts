@@ -13,7 +13,7 @@ export class AnimalService {
 
   create(animal: AnimalDto) {
     let newAnimal = new Animal();
-    newAnimal = {...animal}
+    newAnimal = { ...animal };
 
     return this.animalRepository.save(newAnimal);
   }
