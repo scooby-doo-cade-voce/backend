@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ResponsibleService } from './responsible.service';
 import { ResponsibleDto } from './dto/responsible.dto';
 
-@Controller('responsible')
+@Controller('api/responsibles')
 export class ResponsibleController {
   constructor(private readonly responsibleService: ResponsibleService) {}
 
@@ -16,10 +16,11 @@ export class ResponsibleController {
     return this.responsibleService.findAll();
   }
 
-  /* @Get(':id')
+  @Get(':id')
   findOne(@Param('id') id: string) {
+    console.log(id)
     return this.responsibleService.findOne(+id);
-  } */
+  }
 
   /* @Patch(':id')
   update(@Param('id') id: string, @Body() responsibleDto: ResponsibleDto) {

@@ -1,11 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAnimalDto } from './dto/create-animal.dto';
-import { UpdateAnimalDto } from './dto/update-animal.dto';
+import { AnimalDto } from './dto/animal.dto';
+import { Animal } from './entities/animal.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class AnimalService {
-  create(createAnimalDto: CreateAnimalDto) {
-    return 'This action adds a new animal';
+  constructor(
+    @InjectRepository(Animal)
+    private readonly animalRepository: Repository<Animal>,
+  ) {}
+
+  create(animal: AnimalDto) {
+    let newAnimal = new Animal();
+    newAnimal = {...animal}
+
+    return this.animalRepository.save(newAnimal);
   }
 
   findAll() {
@@ -16,11 +26,11 @@ export class AnimalService {
     return `This action returns a #${id} animal`;
   }
 
-  update(id: number, updateAnimalDto: UpdateAnimalDto) {
+  /* update(id: number, updateAnimalDto: UpdateAnimalDto) {
     return `This action updates a #${id} animal`;
   }
 
   remove(id: number) {
     return `This action removes a #${id} animal`;
-  }
+  } */
 }

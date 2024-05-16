@@ -20,15 +20,15 @@ export class Responsible {
   })
   createdAt?: Date;
 
-  @UpdateDateColumn({
+  /* @UpdateDateColumn({
     type: 'timestamp',
     default: () => "CURRENT_TIMESTAMP(6)", name: 'updated_at'
   })
-  updatedAt?: Date;
+  updatedAt?: Date; */
 
-  @DeleteDateColumn({
+  /* @DeleteDateColumn({
     type: 'timestamp',
     default: () => "CURRENT_TIMESTAMP(6)", name: 'deleted_at'
   })
-  deletedAt?: Date;
+  deletedAt?: Date; */
 }
