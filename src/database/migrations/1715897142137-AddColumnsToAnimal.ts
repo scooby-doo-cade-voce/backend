@@ -19,6 +19,12 @@ export class AddColumnsToAnimal1715897142137 implements MigrationInterface {
                 isNullable: false,
             }),
             new TableColumn({
+                name: "specie_id",
+                type: 'enum',
+                enum: ['1', '2', '3', '4', '5'],
+                enumName: 'species_enum'
+            }),
+            new TableColumn({
                 name: 'responsible_id',
                 type: 'int',
                 isNullable: false
@@ -40,11 +46,14 @@ export class AddColumnsToAnimal1715897142137 implements MigrationInterface {
         await queryRunner.dropColumn('animals', 'responsible_id');
 
         // Remover colunas e tipos ENUM
-        await queryRunner.dropColumn('animals', 'color');
+        await queryRunner.dropColumn('animals', 'color_id');
         await queryRunner.query(`DROP TYPE "color_enum"`);
 
-        await queryRunner.dropColumn('animals', 'size');
+        await queryRunner.dropColumn('animals', 'size_id');
         await queryRunner.query(`DROP TYPE "size_enum"`);
+
+        await queryRunner.dropColumn('animals', 'specie_id');
+        await queryRunner.query(`DROP TYPE "species_enum"`);
     }
 
 }

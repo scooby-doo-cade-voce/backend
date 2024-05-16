@@ -16,6 +16,9 @@ export class Animal {
     size_id: number;
 
     @Column()
+    specie_id: number;
+
+    @Column()
     color_id: number;
 
     @OneToOne(() => Responsible, (responsible => (responsible.id)))
