@@ -5,6 +5,10 @@
   "author": "Vanessa Souto",
   "private": true,
   "license": "",
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  },
   "scripts": {
     "build": "nest build",
     "commit": "git-cz",
