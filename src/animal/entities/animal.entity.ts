@@ -1,4 +1,3 @@
-import { Responsible } from 'src/responsible/entities/responsible.entity';
 import {
   Column,
   CreateDateColumn,
@@ -8,6 +7,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Media } from '../../media/entities/media.entity';
+import { Responsible } from "../../responsible/entities/responsible.entity";
 
 @Entity('animals')
 export class Animal {
