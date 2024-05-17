@@ -9,6 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { SizeModule } from './size/size.module';
 import { SpeciesModule } from './species/species.module';
 import { ColorsModule } from './colors/colors.module';
+import { MediaModule } from './media/media.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ColorsModule } from './colors/colors.module';
     SizeModule,
     SpeciesModule,
     ColorsModule,
+    MediaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
