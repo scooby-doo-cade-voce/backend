@@ -1,10 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { ColorsService } from './colors.service';
-import * as fs from "fs";
+import * as fs from 'fs';
 
 @Controller('api/colors')
 export class ColorsController {
-  constructor(private readonly colorsService: ColorsService) { }
+  constructor(private readonly colorsService: ColorsService) {}
 
   @Get()
   findAll() {

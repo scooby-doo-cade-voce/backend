@@ -5,13 +5,12 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AnimalGetPatchDto } from './dto/animalGetPatch.dto';
 
-
 @Injectable()
 export class AnimalService {
   constructor(
     @InjectRepository(Animal)
     private readonly animalRepository: Repository<Animal>,
-  ) { }
+  ) {}
 
   create(animal: AnimalDto) {
     let newAnimal = new Animal();
@@ -27,8 +26,8 @@ export class AnimalService {
   findOne(id: number) {
     return this.animalRepository.findOne({
       where: {
-        id
-      }
+        id,
+      },
     });
   }
 

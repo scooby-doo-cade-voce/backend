@@ -1,10 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { SpeciesService } from './species.service';
-import * as fs from "fs";
+import * as fs from 'fs';
 
 @Controller('api/species')
 export class SpeciesController {
-  constructor(private readonly speciesService: SpeciesService) { }
+  constructor(private readonly speciesService: SpeciesService) {}
 
   @Get()
   findAll() {

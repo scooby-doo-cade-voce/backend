@@ -1,10 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { SizeService } from './size.service';
-import * as fs from "fs";
+import * as fs from 'fs';
 
 @Controller('api/sizes')
 export class SizeController {
-  constructor(private readonly sizeService: SizeService) { }
+  constructor(private readonly sizeService: SizeService) {}
 
   @Get()
   findAll() {

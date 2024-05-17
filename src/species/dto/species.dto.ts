@@ -1,4 +1,4 @@
 export class SpeciesDto {
-    id: number;
-    label: number;
+  id: number;
+  label: number;
 }

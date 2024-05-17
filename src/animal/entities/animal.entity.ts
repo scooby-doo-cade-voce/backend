@@ -4,7 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  OneToOne
+  OneToOne,
 } from 'typeorm';
 
 @Entity()
@@ -27,7 +27,7 @@ export class Animal {
   @Column()
   color_id: number;
 
-  @OneToOne(() => Responsible, (responsible => (responsible.id)))
+  @OneToOne(() => Responsible, (responsible) => responsible.id)
   responsible_id: number;
 
   @Column({ nullable: true })
@@ -35,7 +35,8 @@ export class Animal {
 
   @CreateDateColumn({
     type: 'timestamp',
-    default: () => "CURRENT_TIMESTAMP(6)", name: 'created_at'
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    name: 'created_at',
   })
   createdAt?: Date;
 }

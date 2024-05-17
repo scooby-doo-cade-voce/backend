@@ -5,7 +5,7 @@ import { AnimalGetPatchDto } from './dto/animalGetPatch.dto';
 
 @Controller('api/animals')
 export class AnimalController {
-  constructor(private readonly animalService: AnimalService) { }
+  constructor(private readonly animalService: AnimalService) {}
 
   @Post()
   create(@Body() animalDto: AnimalDto) {
@@ -22,10 +22,12 @@ export class AnimalController {
     const animalQuery: AnimalGetPatchDto = req.query;
 
     // Verifica se algum parâmetro foi enviado
-    if (JSON.stringify(animalQuery) !== "{}") {
+    if (JSON.stringify(animalQuery) !== '{}') {
       return this.animalService.find(animalQuery);
     } else {
-      return { error: "Você precisa especificar ao menos um item para pesquisar." }
+      return {
+        error: 'Você precisa especificar ao menos um item para pesquisar.',
+      };
     }
   }
 
