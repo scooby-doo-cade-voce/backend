@@ -3,7 +3,6 @@ import { AnimalDto } from './dto/animal.dto';
 import { Animal } from './entities/animal.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { where } from 'sequelize';
 import { AnimalGetPatchDto } from './dto/animalGetPatch.dto';
 
 
@@ -16,7 +15,7 @@ export class AnimalService {
 
   create(animal: AnimalDto) {
     let newAnimal = new Animal();
-    newAnimal = { ...animal }
+    newAnimal = { ...animal };
 
     return this.animalRepository.save(newAnimal);
   }

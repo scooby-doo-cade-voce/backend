@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Req } from '@nestjs/common';
 import { AnimalService } from './animal.service';
 import { AnimalDto } from './dto/animal.dto';
 import { AnimalGetPatchDto } from './dto/animalGetPatch.dto';
@@ -30,12 +30,12 @@ export class AnimalController {
   }
 
   /*  @Patch(':id')
-   update(@Param('id') id: string, @Body() updateAnimalDto: UpdateAnimalDto) {
-     return this.animalService.update(+id, updateAnimalDto);
-   }
- 
-   @Delete(':id')
-   remove(@Param('id') id: string) {
-     return this.animalService.remove(+id);
-   } */
+  update(@Param('id') id: string, @Body() updateAnimalDto: UpdateAnimalDto) {
+    return this.animalService.update(+id, updateAnimalDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.animalService.remove(+id);
+  } */
 }
