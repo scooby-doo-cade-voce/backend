@@ -22,7 +22,7 @@ export class Animal {
     color_id: number;
 
     @OneToOne(() => Responsible, (responsible => (responsible.id)))
-    responsible: Responsible;
+    responsible_id: number;
 
     @Column({ nullable: true })
     age?: number;
