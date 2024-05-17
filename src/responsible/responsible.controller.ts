@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { ResponsibleService } from './responsible.service';
 import { ResponsibleDto } from './dto/responsible.dto';
 
@@ -18,7 +18,7 @@ export class ResponsibleController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    console.log(id)
+    console.log(id);
     return this.responsibleService.findOne(+id);
   }
 

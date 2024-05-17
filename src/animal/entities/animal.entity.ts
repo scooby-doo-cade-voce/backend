@@ -1,4 +1,11 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Responsible } from 'src/responsible/entities/responsible.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToOne,
+} from 'typeorm';
 
 @Entity()
 export class Animal {
@@ -11,12 +18,25 @@ export class Animal {
   @Column()
   description: string;
 
+  @Column()
+  size_id: number;
+
+  @Column()
+  specie_id: number;
+
+  @Column()
+  color_id: number;
+
+  @OneToOne(() => Responsible, (responsible) => responsible.id)
+  responsible_id: number;
+
   @Column({ nullable: true })
   age?: number;
 
   @CreateDateColumn({
     type: 'timestamp',
-    default: () => "CURRENT_TIMESTAMP(6)", name: 'created_at'
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    name: 'created_at',
   })
   createdAt?: Date;
 }

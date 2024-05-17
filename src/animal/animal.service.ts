@@ -3,6 +3,7 @@ import { AnimalDto } from './dto/animal.dto';
 import { Animal } from './entities/animal.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { AnimalGetPatchDto } from './dto/animalGetPatch.dto';
 
 @Injectable()
 export class AnimalService {
@@ -13,17 +14,25 @@ export class AnimalService {
 
   create(animal: AnimalDto) {
     let newAnimal = new Animal();
-    newAnimal = {...animal}
+    newAnimal = { ...animal };
 
     return this.animalRepository.save(newAnimal);
   }
 
   findAll() {
-    return `This action returns all animal`;
+    return this.animalRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} animal`;
+    return this.animalRepository.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
+  find(animal: AnimalGetPatchDto) {
+    return this.animalRepository.findBy(animal);
   }
 
   /* update(id: number, updateAnimalDto: UpdateAnimalDto) {
