@@ -13,7 +13,7 @@ export class ResponsibleService {
 
   create(responsible: ResponsibleDto) {
     let newResponsible = new Responsible();
-    newResponsible = {...responsible}
+    newResponsible = { ...responsible };
 
     return this.responsibleRepository.save(newResponsible);
   }

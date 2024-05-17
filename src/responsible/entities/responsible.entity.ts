@@ -1,4 +1,9 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Responsible {
@@ -16,7 +21,8 @@ export class Responsible {
 
   @CreateDateColumn({
     type: 'timestamp',
-    default: () => "CURRENT_TIMESTAMP(6)", name: 'created_at'
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    name: 'created_at',
   })
   createdAt?: Date;
 
