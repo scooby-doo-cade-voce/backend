@@ -1,25 +1,26 @@
 name: Check eslint
 
 on:
-    pull_request:
-        branches: 
-            scooby-doo-cade-voce:master
-            master
+  pull_request:
+    branches:
+      - scooby-doo-cade-voce:master
+      - master
 
 jobs:
-    quality:
-        name: Check eslint
-        runs-on: ubuntu-latest
+  quality:
+    name: Check eslint
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
-        
-            - uses: actions/setup-node@v4
-              with:
-                node-version: 20
+    steps:
+      - uses: actions/checkout@v4
 
-            - name: Install dependencies
-              run: npm install
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
 
-            - name: Run Eslint check
-              run: npm run lint
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Eslint check
+        run: yarn run lint

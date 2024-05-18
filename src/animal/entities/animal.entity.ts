@@ -7,7 +7,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Media } from '../../media/entities/media.entity';
-import { Responsible } from "../../responsible/entities/responsible.entity";
+import { Responsible } from '../../responsible/entities/responsible.entity';
 
 @Entity('animals')
 export class Animal {
