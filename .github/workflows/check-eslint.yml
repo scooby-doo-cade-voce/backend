@@ -6,8 +6,8 @@ on:
     - cron: '0 1 * * *'
   pull_request:
      branches: 
-       scooby-doo-cade-voce:master
-       master
+       - scooby-doo-cade-voce:master
+       - master
 
 jobs:
   quality:
