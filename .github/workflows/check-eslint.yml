@@ -2,7 +2,9 @@ name: Check eslint
 
 on:
     pull_request:
-        branches: scooby-doo-cade-voce:master
+        branches: 
+            scooby-doo-cade-voce:master
+            master
 
 jobs:
     quality:
