@@ -1,6 +1,15 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  OneToMany,
+} from 'typeorm';
+import { Media } from '../../media/entities/media.entity';
+import { Responsible } from "../../responsible/entities/responsible.entity";
 
-@Entity()
+@Entity('animals')
 export class Animal {
   @PrimaryGeneratedColumn()
   id?: number;
@@ -11,12 +20,30 @@ export class Animal {
   @Column()
   description: string;
 
+  @Column()
+  size_id: number;
+
+  @Column()
+  specie_id: number;
+
+  @Column()
+  color_id: number;
+
+  @OneToOne(() => Responsible, (responsible) => responsible.id)
+  responsible_id: number;
+
   @Column({ nullable: true })
   age?: number;
 
+  @OneToMany(() => Media, (media) => media.animal, {
+    cascade: ['insert'],
+  })
+  medias?: Media[];
+
   @CreateDateColumn({
     type: 'timestamp',
-    default: () => "CURRENT_TIMESTAMP(6)", name: 'created_at'
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    name: 'created_at',
   })
   createdAt?: Date;
 }
