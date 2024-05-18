@@ -1,7 +1,9 @@
 name: Check eslint
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * *'
   pull_request:
      branches: 
        scooby-doo-cade-voce:master
