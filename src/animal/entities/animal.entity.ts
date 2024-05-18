@@ -1,13 +1,15 @@
-import { Responsible } from 'src/responsible/entities/responsible.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
   OneToOne,
+  OneToMany,
 } from 'typeorm';
+import { Media } from '../../media/entities/media.entity';
+import { Responsible } from "../../responsible/entities/responsible.entity";
 
-@Entity()
+@Entity('animals')
 export class Animal {
   @PrimaryGeneratedColumn()
   id?: number;
@@ -32,6 +34,11 @@ export class Animal {
 
   @Column({ nullable: true })
   age?: number;
+
+  @OneToMany(() => Media, (media) => media.animal, {
+    cascade: ['insert'],
+  })
+  medias?: Media[];
 
   @CreateDateColumn({
     type: 'timestamp',

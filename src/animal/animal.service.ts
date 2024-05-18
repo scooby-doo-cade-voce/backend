@@ -20,7 +20,9 @@ export class AnimalService {
   }
 
   findAll() {
-    return this.animalRepository.find();
+    return this.animalRepository.find({
+      relations: ['medias'],
+    });
   }
 
   findOne(id: number) {
@@ -28,11 +30,15 @@ export class AnimalService {
       where: {
         id,
       },
+      relations: ['medias'],
     });
   }
 
   find(animal: AnimalGetPatchDto) {
-    return this.animalRepository.findBy(animal);
+    return this.animalRepository.find({
+      where: animal,
+      relations: ['medias'],
+    });
   }
 
   /* update(id: number, updateAnimalDto: UpdateAnimalDto) {
