@@ -2,11 +2,11 @@
 
 export class AnimalGetPatchDto {
   id?: number;
-  name?: string;
+  name: string;
   age?: number; //months
   description?: string;
-  size_id?: number;
-  specie_id?: number;
-  color_id?: number;
-  responsible_id?: number;
+  size_id: number;
+  specie_id: number;
+  color_id: number;
+  responsible_id: number;
 }

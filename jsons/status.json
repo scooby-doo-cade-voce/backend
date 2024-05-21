@@ -1,0 +1,14 @@
+[
+  {
+    "id": "active",
+    "label": "Ativo"
+  },
+  {
+    "id": "disabled",
+    "label": "Desativado"
+  },
+  {
+    "id": "concluded",
+    "label": "Desativado"
+  }
+]
