@@ -6,6 +6,7 @@ export class AnimalDto {
   name: string;
   @ApiProperty()
   age: number; //months
+  age?: number; //months
   @ApiProperty()
   description: string;
   @ApiProperty()
@@ -14,6 +15,7 @@ export class AnimalDto {
   specie_id: number;
   @ApiProperty()
   color_id: number;
+  status: string;
   @ApiProperty()
   responsible_id: number; /** Alterado para relacionamento OneToOne */
   @ApiProperty()
