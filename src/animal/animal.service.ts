@@ -15,8 +15,7 @@ export class AnimalService {
   create(animal: AnimalDto) {
     let newAnimal = new Animal();
     newAnimal = { ...animal };
-
-    return this.animalRepository.save(newAnimal);
+    return this.animalRepository.save(newAnimal).catch((error) => error);
   }
 
   findAll() {

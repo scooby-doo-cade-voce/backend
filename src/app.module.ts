@@ -10,6 +10,7 @@ import { SizeModule } from './size/size.module';
 import { SpeciesModule } from './species/species.module';
 import { ColorsModule } from './colors/colors.module';
 import { MediaModule } from './media/media.module';
+import { StatusModule } from './status/status.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { MediaModule } from './media/media.module';
     SizeModule,
     SpeciesModule,
     ColorsModule,
+    StatusModule,
     MediaModule,
   ],
   controllers: [AppController],
