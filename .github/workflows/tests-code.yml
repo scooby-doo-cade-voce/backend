@@ -27,7 +27,7 @@ jobs:
         run: yarn run lint
 
   quality-codeQL:
-    name: Analyze (javascript-typescript)
+    name: Check codeQL
     runs-on: ubuntu-latest
     timeout-minutes: 360
     permissions:
@@ -43,7 +43,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: javascript-typescript
+        quality-       languages: javascript-typescript
         build-mode: none
     
     - name: Perform CodeQL Analysis
