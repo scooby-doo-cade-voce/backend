@@ -3,8 +3,8 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  OneToOne,
   OneToMany,
+  OneToOne,
 } from 'typeorm';
 import { Media } from '../../media/entities/media.entity';
 import { Responsible } from '../../responsible/entities/responsible.entity';
@@ -29,8 +29,10 @@ export class Animal {
   @Column()
   color_id: number;
 
-  @OneToOne(() => Responsible, (responsible) => responsible.id)
-  responsible_id: number;
+  @OneToOne(() => Responsible, (responsible) => responsible.animal, {
+    cascade: ['insert'],
+  })
+  responsible?: Responsible;
 
   @Column({ nullable: true })
   age?: number;

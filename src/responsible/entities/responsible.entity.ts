@@ -2,8 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Animal } from '../../animal/entities/animal.entity';
 
 @Entity()
 export class Responsible {
@@ -18,6 +21,10 @@ export class Responsible {
 
   @Column({ nullable: true })
   email?: string;
+
+  @OneToOne(() => Animal, (animal) => animal.responsible)
+  @JoinColumn()
+  animal?: Animal;
 
   @CreateDateColumn({
     type: 'timestamp',

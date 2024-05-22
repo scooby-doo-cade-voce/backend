@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Media } from '../../media/entities/media.entity';
+import { ResponsibleDto } from '../../responsible/dto/responsible.dto';
 
 export class AnimalDto {
   @ApiProperty()
@@ -17,7 +18,7 @@ export class AnimalDto {
   @ApiProperty()
   status: string;
   @ApiProperty()
-  responsible_id: number; /** Alterado para relacionamento OneToOne */
+  responsible: ResponsibleDto; /** Alterado para relacionamento OneToOne */
   @ApiProperty()
   medias?: Media[];
 }
