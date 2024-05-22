@@ -20,7 +20,7 @@ export class AnimalService {
 
   findAll() {
     return this.animalRepository.find({
-      relations: ['medias'],
+      relations: ['medias', 'responsible'],
     });
   }
 
@@ -29,14 +29,14 @@ export class AnimalService {
       where: {
         id,
       },
-      relations: ['medias'],
+      relations: ['medias', 'responsible'],
     });
   }
 
   find(animal: AnimalGetPatchDto) {
     return this.animalRepository.find({
       where: animal,
-      relations: ['medias'],
+      relations: ['medias', 'responsible'],
     });
   }
 

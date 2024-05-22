@@ -1,4 +1,5 @@
 import { Media } from '../../media/entities/media.entity';
+import { ResponsibleDto } from '../../responsible/dto/responsible.dto';
 
 export class AnimalDto {
   name: string;
@@ -8,6 +9,6 @@ export class AnimalDto {
   specie_id: number;
   color_id: number;
   status: string;
-  responsible_id: number; /** Alterado para relacionamento OneToOne */
+  responsible: ResponsibleDto; /** Alterado para relacionamento OneToOne */
   medias?: Media[];
 }
