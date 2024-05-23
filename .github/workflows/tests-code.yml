@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  quality:
+  quality-eslint:
     name: Check eslint
     runs-on: ubuntu-latest
     steps:
@@ -25,6 +25,31 @@ jobs:
 
       - name: Run Eslint check
         run: yarn run lint
+
+  quality-codeQL:
+    name: Check codeQL
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        quality-       languages: javascript-typescript
+        build-mode: none
+    
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:javascript-typescript"
 
   jest:
     name: Run jest tests
