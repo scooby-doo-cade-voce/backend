@@ -1,12 +1,18 @@
-import { Controller, Get, Post, Body, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Req, BadRequestException, Module } from '@nestjs/common';
 import { AnimalService } from './animal.service';
 import { AnimalDto } from './dto/animal.dto';
 import { AnimalGetPatchDto } from './dto/animalGetPatch.dto';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Media } from 'src/media/entities/media.entity';
+import { ResponsibleDto } from 'src/responsible/dto/responsible.dto';
+import { MediaDto } from 'src/media/dto/media.dto';
+
 @ApiTags('Animals')
 @Controller('api/animals')
 export class AnimalController {
-  constructor(private readonly animalService: AnimalService) {}
+  constructor(
+    private readonly animalService: AnimalService
+  ) { }
   @Post()
   @ApiOperation({ summary: 'Create an animal' })
   @ApiResponse({
@@ -15,16 +21,23 @@ export class AnimalController {
   })
   @ApiParam({
     name: 'medias',
-    type: String,
+    type: MediaDto,
     description: 'Here goes the url that have the animal image',
-    example: ['https://firsturl', 'https://secondurl', 'https://secondurl'],
+    example: {
+      url: 'https://imgur.com',
+      mediaType: 'jpeg/jpg'
+    },
     required: true,
   })
   @ApiParam({
-    name: 'responsible_id',
-    type: Number,
+    name: 'responsible',
+    type: ResponsibleDto,
     description: 'Here goes the responsible_id of animal',
-    example: 1,
+    example: {
+      name: 'Joãozinho',
+      cellhpone: '1234567',
+      email: 'teste@gmail.com'
+    },
     required: true,
   })
   @ApiParam({
@@ -63,7 +76,36 @@ export class AnimalController {
     required: true,
   })
   create(@Body() animalDto: AnimalDto) {
-    return this.animalService.create(animalDto);
+    const reqBody = animalDto;
+
+    const requiredFields = ['name', 'size_id', 'specie_id', 'color_id', 'responsible', 'medias'];
+    const responsibleFields = ['name', 'cellphone'];
+
+    // Validação campos animal
+    for (const field of requiredFields) {
+      if (!reqBody[field]) {
+        throw new BadRequestException(`The parameter '${field}' is required.`);
+      }
+    }
+
+    // Validação campos responsável
+    for (const resField of responsibleFields) {
+      if (!reqBody.responsible[resField]) {
+        throw new BadRequestException(`The parameter '${resField}' for responsible is required.`);
+      }
+    }
+
+    if (!Array.isArray(reqBody.medias) || reqBody.medias.length === 0) {
+      throw new BadRequestException('You need to send 1 image.')
+    }
+
+    reqBody.medias.map((media: Media) => {
+      if (!media.url || !media.mediaType) {
+        throw new BadRequestException("The image parameters: 'url' and 'mediaType' are requireds.");
+      }
+    })
+
+    return this.animalService.create(reqBody);
   }
 
   @ApiOperation({ summary: 'Get all animals' })
