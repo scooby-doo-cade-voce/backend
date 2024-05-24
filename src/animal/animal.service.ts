@@ -10,7 +10,7 @@ export class AnimalService {
   constructor(
     @InjectRepository(Animal)
     private readonly animalRepository: Repository<Animal>,
-  ) { }
+  ) {}
 
   create(animal: AnimalDto) {
     let newAnimal = new Animal();
