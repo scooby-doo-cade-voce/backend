@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Animal } from '../../animal/entities/animal.entity';
+import { IsNotEmpty } from 'class-validator';
 
 @Entity('medias')
 export class Media {
@@ -10,8 +11,10 @@ export class Media {
   animal: Animal;
 
   @Column()
+  @IsNotEmpty()
   url: string;
 
   @Column()
+  @IsNotEmpty()
   mediaType: string;
 }
