@@ -9,7 +9,7 @@ import { MediaDto } from '../media/dto/media.dto';
 @ApiTags('Animals')
 @Controller('api/animals')
 export class AnimalController {
-  constructor(private readonly animalService: AnimalService) { }
+  constructor(private readonly animalService: AnimalService) {}
   @Post()
   @ApiOperation({ summary: 'Create an animal' })
   @ApiResponse({
