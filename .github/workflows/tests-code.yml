@@ -43,7 +43,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        quality-       languages: javascript-typescript
+        languages: javascript-typescript
         build-mode: none
     
     - name: Perform CodeQL Analysis
