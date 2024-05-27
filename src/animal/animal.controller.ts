@@ -3,6 +3,9 @@ import { AnimalService } from './animal.service';
 import { AnimalDto } from './dto/animal.dto';
 import { AnimalGetPatchDto } from './dto/animalGetPatch.dto';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ResponsibleDto } from '../responsible/dto/responsible.dto';
+import { MediaDto } from '../media/dto/media.dto';
+
 @ApiTags('Animals')
 @Controller('api/animals')
 export class AnimalController {
@@ -15,16 +18,23 @@ export class AnimalController {
   })
   @ApiParam({
     name: 'medias',
-    type: String,
+    type: MediaDto,
     description: 'Here goes the url that have the animal image',
-    example: ['https://firsturl', 'https://secondurl', 'https://secondurl'],
+    example: {
+      url: 'https://imgur.com',
+      mediaType: 'jpeg/jpg',
+    },
     required: true,
   })
   @ApiParam({
-    name: 'responsible_id',
-    type: Number,
+    name: 'responsible',
+    type: ResponsibleDto,
     description: 'Here goes the responsible_id of animal',
-    example: 1,
+    example: {
+      name: 'Joãozinho',
+      cellhpone: '1234567',
+      email: 'teste@gmail.com',
+    },
     required: true,
   })
   @ApiParam({

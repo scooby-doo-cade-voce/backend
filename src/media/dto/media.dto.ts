@@ -1,5 +1,5 @@
 export class MediaDto {
   url: string;
   mediaType: string;
-  animalId: number;
+  // animalId: number; REMOVIDO
 }
