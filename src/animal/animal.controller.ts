@@ -1,16 +1,10 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Req,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Req } from '@nestjs/common';
 import { AnimalService } from './animal.service';
 import { AnimalDto } from './dto/animal.dto';
 import { AnimalGetPatchDto } from './dto/animalGetPatch.dto';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { ResponsibleDto } from 'src/responsible/dto/responsible.dto';
-import { MediaDto } from 'src/media/dto/media.dto';
+import { ResponsibleDto } from '../responsible/dto/responsible.dto';
+import { MediaDto } from '../media/dto/media.dto';
 
 @ApiTags('Animals')
 @Controller('api/animals')
