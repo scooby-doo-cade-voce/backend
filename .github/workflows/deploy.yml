@@ -1,0 +1,58 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Run tests
+      run: yarn run test
+
+    - name: Build project
+      run: yarn run build
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+    - name: Deploy to Google Compute Engine
+      run: |
+        gcloud compute instances create-with-container backend-instance \
+          --project=${{ secrets.GCP_PROJECT_ID }} \
+          --zone=us-central1-a \
+          --container-image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/backend:latest \
+          --tags=http-server,https-server \
+          --restart-on-failure
+
+    - name: Configure Firewall Rules
+      run: |
+        gcloud compute firewall-rules create allow-http-https \
+          --allow tcp:80,tcp:443 \
+          --target-tags=http-server,https-server \
+          --project=${{ secrets.GCP_PROJECT_ID }}
