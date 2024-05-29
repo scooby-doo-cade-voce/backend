@@ -11,6 +11,14 @@ on:
 permissions:
   id-token: write
   contents: read
+  actions: read
+  issues: write
+  deployments: write
+  checks: write
+  pull-requests: write
+  repository-projects: write
+  security-events: write
+  statuses: write
 
 jobs:
   build:
