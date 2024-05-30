@@ -52,9 +52,11 @@ jobs:
       uses: google-github-actions/setup-gcloud@v1
       with:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
+        install_components: 'beta'
 
     - name: Deploy to Google Compute Engine
       run: |
+        gcloud config set project graphite-prism-424200-k1
         gcloud compute instances create-with-container backend-instance \
           --project=${{ secrets.GCP_PROJECT_ID }} \
           --zone=us-central1-a \
@@ -68,3 +70,7 @@ jobs:
           --allow tcp:80,tcp:443 \
           --target-tags=http-server,https-server \
           --project=${{ secrets.GCP_PROJECT_ID }}
+
+    - name: Post Authenticate to Google Cloud
+        run:echo "Successfully authenticated to Google Cloud"
+        
