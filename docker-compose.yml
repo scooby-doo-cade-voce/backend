@@ -1,4 +1,20 @@
+version: '3.8'
+
 services:
+  app:
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - db_cadevc
+    command: yarn start
+
   db_cadevc:
     image: postgres:13-alpine
     restart: always
@@ -9,6 +25,9 @@ services:
       - TZ=GMT
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
-      - ./.database_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
