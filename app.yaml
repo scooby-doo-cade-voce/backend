@@ -1,0 +1,32 @@
+runtime: nodejs20
+
+instance_class: F1
+
+env_variables:
+  DATABASE_USER: cade_voce_admin
+  DATABASE_PASSWORD: daphine
+  DATABASE_PORT: 5432
+  DATABASE_HOST: 104.198.148.130
+  DATABASE_NAME: cade_voce_db
+
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  max_instances: 2
+
+handlers:
+  - url: /.*
+    script: auto
+    secure: always
+
+resources:
+  cpu: .5
+  memory_gb: 0.5
+  disk_size_gb: 10
+
+health_check:
+  enable_health_check: True
+  check_interval_sec: 5
+  timeout_sec: 4
+  unhealthy_threshold: 2
+  healthy_threshold: 2
+  restart_threshold: 60
